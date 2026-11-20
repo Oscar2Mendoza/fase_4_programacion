@@ -1,11 +1,11 @@
-# Proyecto: Sistema Integral de Gestión - Software FJ (Fase 4).
+# Módulo principal del Sistema Integral de Gestión de Software FJ (Fase 4).
 # Curso: Programación (UNAD).
 
 from abc import ABC, abstractmethod
 import datetime
 
 
-# Excepciones personalizadas para controlar las fallas del negocio.
+# Definición de excepciones específicas para gestionar errores de las operaciones del sistema.
 class ErrorSoftwareFJ(Exception):
     pass
 
@@ -19,7 +19,7 @@ class ReservaInvalidaError(ErrorSoftwareFJ):
     pass
 
 
-# Función para registrar eventos y errores en un archivo de texto plano (logs).
+# Implementación del mecanismo de auditoría para almacenar eventos, advertencias y errores del sistema.
 def registrar_log(tipo, mensaje):
     hora_actual = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     linea_log = f"[{hora_actual}] [{tipo.upper()}] -> {mensaje}\n"
@@ -30,14 +30,14 @@ def registrar_log(tipo, mensaje):
         print(f"No se pudo escribir en el archivo de log: {e}")
 
 
-# Clase abstracta general exigida por la guía.
+# Clase base abstracta que establece la estructura común de las entidades del sistema.
 class EntidadBase(ABC):
     @abstractmethod
     def obtener_detalles(self):
         pass
 
 
-# Clase Cliente con encapsulación (atributos privados) y validaciones.
+# Modelo de cliente con atributos encapsulados y mecanismos de validación de información.
 class Cliente(EntidadBase):
     def __init__(self, id_cliente, nombre, correo, telefono):
         self.__id_cliente = id_cliente
@@ -62,7 +62,7 @@ class Cliente(EntidadBase):
         return self.__nombre
 
 
-# Clase abstracta Servicio.
+# Clase abstracta que define la estructura y el comportamiento general de los servicios disponibles.
 class Servicio(ABC):
     def __init__(self, codigo, nombre_servicio, tarifa_base):
         self.codigo = codigo
@@ -79,7 +79,7 @@ class Servicio(ABC):
         return f"[{self.codigo}] {self.nombre_servicio} - Tarifa base: ${self.tarifa_base} ({estado})"
 
 
-# Servicios especializados que heredan de la clase Servicio.
+# Implementación de servicios especializados mediante el mecanismo de herencia.
 class ReservaSalas(Servicio):
     def __init__(self, codigo, tarifa_base, capacidad):
         super().__init__(codigo, "Reserva de Salas", tarifa_base)
@@ -119,7 +119,7 @@ class AsesoriaEspecializada(Servicio):
         return round(self.tarifa_base * sesiones, 2)
 
 
-# Clase Reserva que une cliente, servicio y tiempos.
+# Entidad encargada de relacionar clientes, servicios y cantidades de tiempo para gestionar reservas.
 class Reserva:
     def __init__(self, id_reserva, cliente, servicio, tiempo_cantidad):
         self.id_reserva = id_reserva
@@ -164,7 +164,7 @@ class Reserva:
             registrar_log("INFO", f"Cierre de ciclo para la reserva {self.id_reserva}.\n")
 
 
-# Simulación de las 10 operaciones requeridas por la guía.
+# Ejecución controlada de escenarios operativos para verificar el comportamiento integral del sistema.
 def simular_operaciones_software_fj():
     print("Iniciando simulación de operaciones - Software FJ\n")
     registrar_log("INICIO", "El programa arrancó la simulación de las 10 operaciones.")
