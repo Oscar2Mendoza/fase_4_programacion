@@ -1,11 +1,11 @@
-# Proyecto: Sistema Integral de Gestión - Software FJ (Fase 4)
-# Curso: Programación (UNAD)
+# Proyecto: Sistema Integral de Gestión - Software FJ (Fase 4).
+# Curso: Programación (UNAD).
 
 from abc import ABC, abstractmethod
 import datetime
 
 
-# Excepciones personalizadas para controlar las fallas del negocio
+# Excepciones personalizadas para controlar las fallas del negocio.
 class ErrorSoftwareFJ(Exception):
     pass
 
@@ -19,7 +19,7 @@ class ReservaInvalidaError(ErrorSoftwareFJ):
     pass
 
 
-# Función para registrar eventos y errores en un archivo de texto plano (logs)
+# Función para registrar eventos y errores en un archivo de texto plano (logs).
 def registrar_log(tipo, mensaje):
     hora_actual = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     linea_log = f"[{hora_actual}] [{tipo.upper()}] -> {mensaje}\n"
@@ -30,14 +30,14 @@ def registrar_log(tipo, mensaje):
         print(f"No se pudo escribir en el archivo de log: {e}")
 
 
-# Clase abstracta general exigida por la guía
+# Clase abstracta general exigida por la guía.
 class EntidadBase(ABC):
     @abstractmethod
     def obtener_detalles(self):
         pass
 
 
-# Clase Cliente con encapsulación (atributos privados) y validaciones
+# Clase Cliente con encapsulación (atributos privados) y validaciones.
 class Cliente(EntidadBase):
     def __init__(self, id_cliente, nombre, correo, telefono):
         self.__id_cliente = id_cliente
@@ -62,7 +62,7 @@ class Cliente(EntidadBase):
         return self.__nombre
 
 
-# Clase abstracta Servicio
+# Clase abstracta Servicio.
 class Servicio(ABC):
     def __init__(self, codigo, nombre_servicio, tarifa_base):
         self.codigo = codigo
@@ -79,7 +79,7 @@ class Servicio(ABC):
         return f"[{self.codigo}] {self.nombre_servicio} - Tarifa base: ${self.tarifa_base} ({estado})"
 
 
-# Servicios especializados que heredan de la clase Servicio
+# Servicios especializados que heredan de la clase Servicio.
 class ReservaSalas(Servicio):
     def __init__(self, codigo, tarifa_base, capacidad):
         super().__init__(codigo, "Reserva de Salas", tarifa_base)
@@ -119,7 +119,7 @@ class AsesoriaEspecializada(Servicio):
         return round(self.tarifa_base * sesiones, 2)
 
 
-# Clase Reserva que une cliente, servicio y tiempos
+# Clase Reserva que une cliente, servicio y tiempos.
 class Reserva:
     def __init__(self, id_reserva, cliente, servicio, tiempo_cantidad):
         self.id_reserva = id_reserva
@@ -164,7 +164,7 @@ class Reserva:
             registrar_log("INFO", f"Cierre de ciclo para la reserva {self.id_reserva}.\n")
 
 
-# Simulación de las 10 operaciones requeridas por la guía
+# Simulación de las 10 operaciones requeridas por la guía.
 def simular_operaciones_software_fj():
     print("Iniciando simulación de operaciones - Software FJ\n")
     registrar_log("INICIO", "El programa arrancó la simulación de las 10 operaciones.")
@@ -173,7 +173,7 @@ def simular_operaciones_software_fj():
     lista_servicios = []
     lista_reservas = []
 
-    # 1. Registrar un cliente válido con éxito
+    # 1. Registrar un cliente válido con éxito.
     print("Operación 1: Registro correcto de cliente")
     try:
         cli1 = Cliente("CLI-01", "Daniel Mendoza", "daniel.mendoza@unad.edu.co", "3001112233")
@@ -182,7 +182,7 @@ def simular_operaciones_software_fj():
     except ClienteNoValidoError as e:
         print(f"   > Error: {e}\n")
 
-    # 2. Intentar registrar un cliente con correo malo (provoca excepción)
+    # 2. Intentar registrar un cliente con correo malo (provoca excepción).
     print("Operación 2: Registro fallido de cliente (correo sin @)")
     try:
         cli_malo = Cliente("CLI-02", "María Pérez", "correosinconsignar", "3112223344")
@@ -190,39 +190,39 @@ def simular_operaciones_software_fj():
     except ClienteNoValidoError as e:
         print(f"   > Excepción atrapada de forma limpia: {e}\n")
 
-    # 3. Crear servicio de Reserva de Salas
+    # 3. Crear servicio de Reserva de Salas.
     print("Operación 3: Creación de servicio de Sala")
     serv_sala = ReservaSalas("SRV-10", 45.0, capacidad=15)
     lista_servicios.append(serv_sala)
     print(f"   > {serv_sala.obtener_detalles()}\n")
 
-    # 4. Crear servicio de Alquiler de Equipos
+    # 4. Crear servicio de Alquiler de Equipos.
     print("Operación 4: Creación de servicio de Equipos")
     serv_eq = AlquilerEquipos("SRV-20", 25.0, tipo_equipo="Kit de Redes Cisco")
     lista_servicios.append(serv_eq)
     print(f"   > {serv_eq.obtener_detalles()}\n")
 
-    # 5. Crear servicio de Asesoría Especializada
+    # 5. Crear servicio de Asesoría Especializada.
     print("Operación 5: Creación de servicio de Asesoría")
     serv_asesor = AsesoriaEspecializada("SRV-30", 60.0, area="Ingeniería de Telecomunicaciones")
     lista_servicios.append(serv_asesor)
     print(f"   > {serv_asesor.obtener_detalles()}\n")
 
-    # 6. Hacer una reserva exitosa de Sala
+    # 6. Hacer una reserva exitosa de Sala.
     print("Operación 6: Procesar reserva exitosa de Sala")
     res1 = Reserva("RES-001", lista_clientes[0], lista_servicios[0], tiempo_cantidad=3)
     lista_reservas.append(res1)
     res1.procesar_reserva()
     print()
 
-    # 7. Hacer una reserva exitosa de Equipos
+    # 7. Hacer una reserva exitosa de Equipos.
     print("Operación 7: Procesar reserva exitosa de Equipos")
     res2 = Reserva("RES-002", lista_clientes[0], lista_servicios[1], tiempo_cantidad=4)
     lista_reservas.append(res2)
     res2.procesar_reserva()
     print()
 
-    # 8. Intentar reservar un servicio desactivado
+    # 8. Intentar reservar un servicio desactivado.
     print("Operación 8: Intentar reservar con servicio inactivo")
     lista_servicios[2].disponible = False
     res3 = Reserva("RES-003", lista_clientes[0], lista_servicios[2], tiempo_cantidad=2)
@@ -230,7 +230,7 @@ def simular_operaciones_software_fj():
     res3.procesar_reserva()
     print()
 
-    # 9. Probar un error de cálculo con parámetros inválidos (tiempo negativo)
+    # 9. Probar un error de cálculo con parámetros inválidos (tiempo negativo).
     print("Operación 9: Validación de error interno en cálculos de costos")
     try:
         lista_servicios[0].calcular_costo(horas=-4)
@@ -239,7 +239,7 @@ def simular_operaciones_software_fj():
         registrar_log("ERROR", f"Fallo en cálculo matemático por número negativo: {ex}")
     print()
 
-    # 10. Reactivar el servicio y procesar una reserva final con éxito
+    # 10. Reactivar el servicio y procesar una reserva final con éxito.
     print("Operación 10: Reactivación de asesoría y reserva final")
     lista_servicios[2].disponible = True
     res4 = Reserva("RES-004", lista_clientes[0], lista_servicios[2], tiempo_cantidad=2)
