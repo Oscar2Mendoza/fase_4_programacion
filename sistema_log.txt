@@ -1,0 +1,38 @@
+[2026-11-19 21:22:12] [INICIO] -> El programa arrancó la simulación de las 10 operaciones.
+[2026-11-19 21:22:12] [ERROR] -> Intento fallido: Correo inválido para María Pérez.
+[2026-11-19 21:22:12] [INFO] -> Iniciando trámite de reserva ID: RES-001...
+[2026-11-19 21:22:12] [EXITO] -> Reserva RES-001 exitosa. Total a pagar: $121.5
+[2026-11-19 21:22:12] [INFO] -> Cierre de ciclo para la reserva RES-001.
+
+[2026-11-19 21:22:12] [INFO] -> Iniciando trámite de reserva ID: RES-002...
+[2026-11-19 21:22:12] [EXITO] -> Reserva RES-002 exitosa. Total a pagar: $120.0
+[2026-11-19 21:22:12] [INFO] -> Cierre de ciclo para la reserva RES-002.
+
+[2026-11-19 21:22:12] [INFO] -> Iniciando trámite de reserva ID: RES-003...
+[2026-11-19 21:22:12] [ADVERTENCIA] -> Reserva RES-003 rechazada: El servicio 'Asesoría Especializada' está inactivo.
+[2026-11-19 21:22:12] [INFO] -> Cierre de ciclo para la reserva RES-003.
+
+[2026-11-19 21:22:12] [ERROR] -> Fallo en cálculo matemático por número negativo: Las horas a reservar tienen que ser mayores a cero.
+[2026-11-19 21:22:12] [INFO] -> Iniciando trámite de reserva ID: RES-004...
+[2026-11-19 21:22:12] [EXITO] -> Reserva RES-004 exitosa. Total a pagar: $120.0
+[2026-11-19 21:22:12] [INFO] -> Cierre de ciclo para la reserva RES-004.
+
+[2026-11-19 21:22:36] [INICIO] -> El programa arrancó la simulación de las 10 operaciones.
+[2026-11-19 21:22:36] [ERROR] -> Intento fallido: Correo inválido para María Pérez.
+[2026-11-19 21:22:36] [INFO] -> Iniciando trámite de reserva ID: RES-001...
+[2026-11-19 21:22:36] [EXITO] -> Reserva RES-001 exitosa. Total a pagar: $121.5
+[2026-11-19 21:22:36] [INFO] -> Cierre de ciclo para la reserva RES-001.
+
+[2026-11-19 21:22:36] [INFO] -> Iniciando trámite de reserva ID: RES-002...
+[2026-11-19 21:22:36] [EXITO] -> Reserva RES-002 exitosa. Total a pagar: $120.0
+[2026-11-19 21:22:36] [INFO] -> Cierre de ciclo para la reserva RES-002.
+
+[2026-11-19 21:22:36] [INFO] -> Iniciando trámite de reserva ID: RES-003...
+[2026-11-19 21:22:36] [ADVERTENCIA] -> Reserva RES-003 rechazada: El servicio 'Asesoría Especializada' está inactivo.
+[2026-11-19 21:22:36] [INFO] -> Cierre de ciclo para la reserva RES-003.
+
+[2026-11-19 21:22:36] [ERROR] -> Fallo en cálculo matemático por número negativo: Las horas a reservar tienen que ser mayores a cero.
+[2026-11-19 21:22:36] [INFO] -> Iniciando trámite de reserva ID: RES-004...
+[2026-11-19 21:22:36] [EXITO] -> Reserva RES-004 exitosa. Total a pagar: $120.0
+[2026-11-19 21:22:36] [INFO] -> Cierre de ciclo para la reserva RES-004.
+
